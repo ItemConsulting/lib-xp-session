@@ -47,3 +47,36 @@ exports.get = function() {
    ...
 }
 ```
+
+## Deploying
+
+### Building
+
+To build he project run the following code
+
+```bash
+./gradlew build
+```
+
+### Deploy locally
+
+Deploy locally for testing purposes:
+
+```bash
+./gradlew publishToMavenLocal
+```
+### Deploy to Bintray
+
+Since we should not check secrets into git, first you need to add some parameters to `~/.gradle/gradle.properties` to be
+able to publish:
+
+```properties
+bintrayUser=myUser
+bintrayApiKey=mySecretApiKey
+```
+
+Run the following code to deploy a new version of the library to [Bintray](https://bintray.com/itemconsulting).
+
+```bash
+./gradlew bintrayUpload
+```
