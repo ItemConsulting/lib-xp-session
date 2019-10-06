@@ -41,9 +41,9 @@ The library includes the following functions:
 var sessionLib = require('/lib/session');
 
 exports.get = function() {
-  sessionLib.setSessionAttribute("myKey", "myValue");
+  sessionLib.setAttribute("myKey", "myValue");
 
-  var myValue = sessionLib.getSessionAttribute("myKey"); // "myValue" is returned
+  var myValue = sessionLib.getAttribute("myKey"); // "myValue" is returned
    ...
 }
 ```
