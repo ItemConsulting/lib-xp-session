@@ -4,6 +4,8 @@ Enonic XP Library for storing attributes on a users session.
 
 [ ![Download](https://api.bintray.com/packages/itemconsulting/public/no.item.xp.lib-xp-session/images/download.svg?version=1.0.0) ](https://bintray.com/itemconsulting/public/no.item.xp.lib-xp-session/1.0.0/link)
 
+<img src="https://github.com/ItemConsulting/lib-xp-session/raw/master/docs/icon.svg?sanitize=true" width="150">
+
 ## Installation  
 
 To install this library you need to add a new dependency to your app's build.gradle file.
