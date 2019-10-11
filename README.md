@@ -15,7 +15,7 @@ To install this library you need to add a new dependency to your app's build.gra
 ```groovy
 repositories {
     maven {
-      url  "http://itemconsulting.bintray.com/public"
+      url  "https://dl.bintray.com/itemconsulting/public"
     }
 }
 
