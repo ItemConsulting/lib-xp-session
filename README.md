@@ -2,7 +2,7 @@
 
 Enonic XP Library for storing attributes on a users session.
 
-[ ![Download](https://api.bintray.com/packages/itemconsulting/public/no.item.xp.lib-xp-session/images/download.svg?version=1.0.0) ](https://bintray.com/itemconsulting/public/no.item.xp.lib-xp-session/1.0.0/link)
+[![](https://jitpack.io/v/no.item/lib-xp-session.svg)](https://jitpack.io/#no.item/lib-xp-session)
 
 <img src="https://github.com/ItemConsulting/lib-xp-session/raw/master/docs/icon.svg?sanitize=true" width="150">
 
@@ -14,13 +14,11 @@ To install this library you need to add a new dependency to your app's build.gra
 
 ```groovy
 repositories {
-    maven {
-      url  "https://dl.bintray.com/itemconsulting/public"
-    }
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-    include 'no.item.xp:lib-xp-session:1.0.0'
+    include 'no.item:lib-xp-session:1.0.0'
 }
 ```
 
@@ -67,18 +65,7 @@ Deploy locally for testing purposes:
 ```bash
 ./gradlew publishToMavenLocal
 ```
-### Deploy to Bintray
 
-Since we should not check secrets into git, first you need to add some parameters to `~/.gradle/gradle.properties` to be
-able to publish:
+## Deploy to Jitpack
 
-```properties
-bintrayUser=myUser
-bintrayApiKey=mySecretApiKey
-```
-
-Run the following code to deploy a new version of the library to [Bintray](https://bintray.com/itemconsulting).
-
-```bash
-./gradlew bintrayUpload
-```
+Go to the [Jitpack page for lib-xp-session](https://jitpack.io/#no.item/lib-xp-session) to deploy from Github.
