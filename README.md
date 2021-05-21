@@ -4,7 +4,7 @@ Enonic XP Library for storing attributes on a users session.
 
 [![](https://jitpack.io/v/no.item/lib-xp-session.svg)](https://jitpack.io/#no.item/lib-xp-session)
 
-<img src="https://github.com/ItemConsulting/lib-xp-session/raw/master/docs/icon.svg?sanitize=true" width="150">
+<img src="https://github.com/ItemConsulting/lib-xp-session/raw/main/docs/icon.svg?sanitize=true" width="150">
 
 ## Installation  
 
