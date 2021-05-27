@@ -6,6 +6,12 @@ Enonic XP Library for storing attributes on a users session.
 
 <img src="https://github.com/ItemConsulting/lib-xp-session/raw/main/docs/icon.svg?sanitize=true" width="150">
 
+## Warning
+
+:warning: ​This library will **not work in clustered environments** with multiple instances of XP running, since the state of the user is not replicated.
+
+You can instead use cookies to store attributes related to the user.
+
 ## Installation  
 
 To install this library you need to add a new dependency to your app's build.gradle file.
