@@ -1,8 +1,6 @@
 const path = require('path');
 const glob = require('glob');
 const R = require('ramda');
-const TerserPlugin = require('terser-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const {
   setEntriesForPath,
   addRule,
@@ -20,7 +18,7 @@ const config = {
   context: path.join(__dirname, RESOURCES_PATH),
   entry: {},
   externals: [
-    /(\/lib\/(enonic|xp|mustache|thymeleaf))?\/.+/
+    /^\/lib\/(.+|\$)$/i
   ],
   output: {
     path: path.join(__dirname, '/build/resources/main'),
@@ -31,27 +29,12 @@ const config = {
     extensions: [],
   },
   optimization: {
-    minimizer: [
-      new TerserPlugin(),
-    ],
-    splitChunks: {
-      minSize: 30000,
-    },
+    minimize: false
   },
-  plugins: [
-    new CopyWebpackPlugin([
-      // { from: 'babel-standalone/', to: 'assets/babel-standalone/' },
-    ], {
-      context: path.resolve(__dirname, 'node_modules')
-    })
-  ],
-  externals: [
-    /\/lib\/(enonic|xp)\/.+/
-  ],
   mode: env.type,
   // Source maps are not usable in server scripts
   devtool: false,
-}
+};
 
 // ----------------------------------------------------------------------------
 // JavaScript loaders
@@ -80,50 +63,14 @@ function addTypeScriptSupport(cfg) {
 
   const entries = listEntries('ts', [
     // Add additional files to the ignore list.
-    // The following path will be transformed to 'src/main/resources/lib/observe/observe.ts:
+    // The following path will be transformed to 'src/main/resources/types.ts:
     'types.ts'
-  ]);
+  ]).filter(entry => entry.indexOf('.d.ts') === -1);
 
   return R.pipe(
     setEntriesForPath(entries),
     addRule(rule),
-    prependExtensions(['.ts', '.json'])
-  )(cfg);
-}
-
-// BABEL
-function addBabelSupport(cfg) {
-  const rule = {
-    test: /\.(es6?|js)$/,
-    exclude: /node_modules/,
-    loader: 'babel-loader',
-    options: {
-      babelrc: false,
-      plugins: [],
-      presets: [
-        [
-          '@babel/preset-env',
-          {
-            // Use custom Browserslist config
-            targets: 'node 0.10',
-            // Polyfills are not required in runtime
-            useBuiltIns: false
-          },
-        ],
-      ]
-    }
-  };
-
-  const entries = listEntries('{js,es,es6}', [
-    // Add additional files to the ignore list.
-    // The following path will be transformed to 'src/main/resources/lib/observe/observe.es6':
-    'lib/observe/observe.es6'
-  ]);
-
-  return R.pipe(
-    setEntriesForPath(entries),
-    addRule(rule),
-    prependExtensions(['.js', '.es', '.es6', '.json'])
+    prependExtensions(['.d.ts', '.ts', '.json'])
   )(cfg);
 }
 
@@ -132,6 +79,5 @@ function addBabelSupport(cfg) {
 // ----------------------------------------------------------------------------
 
 module.exports = R.pipe(
-  addBabelSupport,
   addTypeScriptSupport
 )(config);
