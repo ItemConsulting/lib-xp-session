@@ -8,7 +8,8 @@ Enonic XP Library for storing attributes on a users session.
 
 ## Warning
 
-:warning: ​This library will **not work in clustered environments** with multiple instances of XP running, since the state of the user is not replicated.
+> **Warning**
+> This library will **not work in clustered environments** with multiple instances of XP running, since the state of the user is not replicated.
 
 You can instead use cookies to store attributes related to the user.
 
